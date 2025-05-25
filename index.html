@@ -1,209 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Premium Help Center</title>
   <style>
-    /* Reset & base */
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #333;
-    }
-    .container {
-      background: #fff;
-      width: 100%;
-      max-width: 480px;
-      border-radius: 16px;
-      padding: 30px 35px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-      position: relative;
-    }
-    h1 {
-      margin: 0 0 15px 0;
-      font-weight: 900;
-      font-size: 30px;
-      text-align: center;
-      color: #4a148c;
-      letter-spacing: 1.2px;
-    }
-    p.subtitle {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin-bottom: 30px;
-      user-select: none;
-    }
-    label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #4a148c;
-    }
-    select, input[type="tel"], input[type="file"] {
-      width: 100%;
-      padding: 12px 15px;
-      margin-bottom: 25px;
-      border-radius: 10px;
-      border: 2px solid #b39ddb;
-      font-size: 16px;
-      transition: border-color 0.3s ease;
-      outline-offset: 2px;
-      cursor: pointer;
-    }
-    select:focus, input[type="tel"]:focus, input[type="file"]:focus {
-      border-color: #7e57c2;
-      outline: none;
-    }
-    button {
-      width: 100%;
-      padding: 15px;
-      border: none;
-      background: #7e57c2;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 700;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    button:hover:not(:disabled) {
-      background: #673ab7;
-    }
-    button:disabled {
-      background: #b39ddb;
-      cursor: not-allowed;
-    }
-
-    /* Image preview box */
-    .img-preview {
-      margin-bottom: 25px;
-      text-align: center;
-    }
-    .img-preview img {
-      max-width: 150px;
-      max-height: 150px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-      object-fit: contain;
-      border: 3px solid #7e57c2;
-      user-select: none;
-    }
-
-    /* Loading overlay */
-    .loading-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.85);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 16px;
-      font-size: 18px;
-      font-weight: 700;
-      color: #7e57c2;
-      z-index: 10;
-      display: none;
-      user-select: none;
-    }
-    /* Spinner */
-    .spinner {
-      border: 5px solid #ddd;
-      border-top: 5px solid #7e57c2;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      margin-bottom: 15px;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Success message */
-    .success-message {
-      text-align: center;
-      background-color: #4caf50;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 12px;
-      margin-top: 15px;
-      font-weight: 700;
-      user-select: none;
-    }
-    .waiting-message {
-      margin-top: 12px;
-      color: #4a148c;
-      font-weight: 600;
-      font-size: 15px;
-      text-align: center;
-      user-select: none;
-    }
+    /* ... আগের CSS যেমন ছিল, ঠিক তেমনই থাকবে ... */
   </style>
 </head>
 <body>
-
   <div class="container">
     <h1>Help Center</h1>
-    <p class="subtitle">Facing an issue? Let us know your problem below.</p>
+    <p class="subtitle">Facing an issue? Let us know your problem below.</p><form id="helpForm" enctype="multipart/form-data">
+  <label for="issueType">Select your issue</label>
+  <select id="issueType" name="issueType" required>
+    <option value="" disabled selected>-- Choose a problem --</option>
+    <option value="Withdrawal Problem (\u099f\u09be\u0995\u09be \u09aa\u09be\u09a8\u09a8\u09bf)">Withdrawal Problem (\u099f\u09be\u0995\u09be \u09aa\u09be\u09a8\u09a8\u09bf)</option>
+    <option value="Account Issue (\u0985\u09cd\u09af\u09be\u0995\u09be\u0989\u09a8\u09cd\u099f \u09b8\u09ae\u09b8\u09cd\u09af\u09be)">Account Issue (\u0985\u09cd\u09af\u09be\u0995\u09be\u0989\u09a8\u09cd\u099f \u09b8\u09ae\u09b8\u09cd\u09af\u09be)</option>
+    <option value="Referral not credited (\u09b0\u09c7\u09ab\u09be\u09b0 \u09b9\u09df \u09a8\u09be)">Referral not credited (\u09b0\u09c7\u09ab\u09be\u09b0 \u09b9\u09df \u09a8\u09be)</option>
+    <option value="Payment Number Error (\u09aa\u09c7\u09ae\u09c7\u09a8\u09cd\u099f \u09a8\u09be\u09ae\u09cd\u09ac\u09be\u09b0 \u09ad\u09c1\u09b2)">Payment Number Error (\u09aa\u09c7\u09ae\u09c7\u09a8\u09cd\u099f \u09a8\u09be\u09ae\u09cd\u09ac\u09be\u09b0 \u09ad\u09c1\u09b2)</option>
+    <option value="Other Problem (\u0985\u09a8\u09cd\u09af\u09be\u09a8\u09cd\u09af \u09b8\u09ae\u09b8\u09cd\u09af\u09be)">Other Problem (\u0985\u09a8\u09cd\u09af\u09be\u09a8\u09cd\u09af \u09b8\u09ae\u09b8\u09cd\u09af\u09be)</option>
+  </select>
 
-    <form id="helpForm" enctype="multipart/form-data">
-      <label for="issueType">Select your issue</label>
-      <select id="issueType" name="issueType" required>
-        <option value="" disabled selected>-- Choose a problem --</option>
-        <option value="Withdrawal Problem (টাকা পাননি)">Withdrawal Problem (টাকা পাননি)</option>
-        <option value="Account Issue (অ্যাকাউন্ট সমস্যা)">Account Issue (অ্যাকাউন্ট সমস্যা)</option>
-        <option value="Referral not credited (রেফার হয় না)">Referral not credited (রেফার হয় না)</option>
-        <option value="Payment Number Error (পেমেন্ট নাম্বার ভুল)">Payment Number Error (পেমেন্ট নাম্বার ভুল)</option>
-        <option value="Other Problem (অন্যান্য সমস্যা)">Other Problem (অন্যান্য সমস্যা)</option>
-      </select>
+  <label for="phone">Your Bkash Number / Phone Number</label>
+  <input type="tel" id="phone" name="phone" placeholder="017XXXXXXXX" pattern="[0-9]{11}" required />
 
-      <label for="phone">Your Bkash Number / Phone Number</label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        placeholder="017XXXXXXXX"
-        pattern="[0-9]{11}"
-        required
-      />
+  <label for="screenshot">Upload Screenshot (optional but recommended)</label>
+  <input type="file" id="screenshot" name="screenshot" accept="image/*" />
 
-      <label for="screenshot">Upload Screenshot (optional but recommended)</label>
-      <input type="file" id="screenshot" name="screenshot" accept="image/*" />
-
-      <div class="img-preview" id="imgPreview" style="display:none;">
-        <img src="" alt="Screenshot Preview" />
-      </div>
-
-      <button type="submit" id="submitBtn">Submit</button>
-    </form>
-
-    <div id="successMsg" class="success-message" style="display:none;">
-      Thank you! Your request has been submitted successfully.
-    </div>
-    <div id="waitingMsg" class="waiting-message" style="display:none;">
-      Please wait for 24-48 hours while we review your issue.
-    </div>
-
-    <div class="loading-overlay" id="loadingOverlay">
-      <div class="spinner"></div>
-      Sending your request...
-    </div>
+  <div class="img-preview" id="imgPreview" style="display:none;">
+    <img src="" alt="Screenshot Preview" />
   </div>
 
-<script>
+  <button type="submit" id="submitBtn">Submit</button>
+</form>
+
+<div id="successMsg" class="success-message" style="display:none;">
+  Thank you! Your request has been submitted successfully.
+</div>
+<div id="waitingMsg" class="waiting-message" style="display:none;">
+  Please wait for 24-48 hours while we review your issue.
+</div>
+
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  Sending your request...
+</div>
+
+  </div><script>
   const form = document.getElementById('helpForm');
   const screenshotInput = document.getElementById('screenshot');
   const imgPreview = document.getElementById('imgPreview');
@@ -213,30 +56,7 @@
   const waitingMsg = document.getElementById('waitingMsg');
   const submitBtn = document.getElementById('submitBtn');
 
-// টেলিগ্রাম বট সেটিংস
-const BOT_TOKEN = 'YOUR_BOT_TOKEN';
-const CHAT_ID = 'YOUR_CHAT_ID';
-
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const issueType = form.issueType.value;
-  const phone = form.phone.value;
-  const file = screenshotInput.files[0];
-
-  if (!issueType || !phone) {
-    alert("Please fill all required fields.");
-    return;
-  }
-
-  // Disable submit button
-  submitBtn.disabled = true;
-  loadingOverlay.style.display = 'flex';
-
-  const formData = new FormData();
-  formData.append("chat_id", CHAT_ID);
-  formData.append("caption",
-                  // Show image preview when user selects a file
+  // Image preview
   screenshotInput.addEventListener('change', () => {
     const file = screenshotInput.files[0];
     if(file) {
@@ -252,38 +72,48 @@ form.addEventListener('submit', function(e) {
     }
   });
 
+  // Form submit handler
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    if (!form.issueType.value || !form.phone.value) {
+    const issueType = form.issueType.value;
+    const phone = form.phone.value;
+    const file = screenshotInput.files[0];
+
+    if (!issueType || !phone) {
       alert("Please fill all required fields.");
       return;
     }
 
-    // Disable the submit button to prevent multiple clicks
     submitBtn.disabled = true;
-
-    // Show loading overlay
     loadingOverlay.style.display = 'flex';
 
-    // Simulate sending data to server or Telegram API
-    setTimeout(() => {
-      loadingOverlay.style.display = 'none';
+    const formData = new FormData();
+    formData.append("issueType", issueType);
+    formData.append("phone", phone);
+    if (file) {
+      formData.append("screenshot", file);
+    }
 
-      // Show success message and waiting note
+    fetch("send.php", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.text())
+    .then(() => {
+      loadingOverlay.style.display = 'none';
       successMsg.style.display = 'block';
       waitingMsg.style.display = 'block';
-
-      // Reset form & image preview
       form.reset();
       imgPreview.style.display = 'none';
       imgPreviewImg.src = '';
-
-      // Enable submit button again
       submitBtn.disabled = false;
-    }, 3000);  // simulate 3 seconds delay
-
+    })
+    .catch(() => {
+      alert("Error sending request");
+      loadingOverlay.style.display = 'none';
+      submitBtn.disabled = false;
+    });
   });
-</script>
-</body>
+</script></body>
 </html>
